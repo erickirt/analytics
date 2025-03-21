@@ -1,7 +1,7 @@
 <.settings_tiles>
-  <.tile>
+  <.tile docs="users-roles">
     <:title>
-      <a id="update-name">Team Information</a>
+      <a id="update-name#changing-the-name-of-a-team">Team Information</a>
     </:title>
     <:subtitle>
       Change the name of your team
@@ -12,14 +12,6 @@
       for={@team_name_changeset}
       method="post"
     >
-      <div class="w-1/2">
-        <.input_with_clipboard
-          name="team-identifier"
-          id="team-identifier"
-          label="Team Identifier"
-          value={@current_team.identifier}
-        />
-      </div>
       <.input
         readonly={@current_team_role not in [:owner, :admin]}
         type="text"
@@ -33,7 +25,7 @@
       </.button>
     </.form>
   </.tile>
-  <.tile>
+  <.tile docs="users-roles#managing-team-member-roles">
     <:title>
       <a id="team-members">Team Members</a>
     </:title>

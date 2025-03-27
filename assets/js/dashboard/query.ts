@@ -1,5 +1,3 @@
-/** @format */
-
 import {
   nowForSite,
   formatISO,
@@ -56,7 +54,7 @@ export type DashboardQuery = {
 }
 
 export const queryDefaultValue: DashboardQuery = {
-  period: '30d' as QueryPeriod,
+  period: '28d' as QueryPeriod,
   comparison: null,
   match_day_of_week: true,
   date: null,

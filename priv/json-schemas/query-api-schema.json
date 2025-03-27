@@ -198,8 +198,16 @@
           "description": "Last 7 days relative to today"
         },
         {
+          "const": "28d",
+          "description": "Last 28 days relative to today"
+        },
+        {
           "const": "30d",
           "description": "Last 30 days relative to today"
+        },
+        {
+          "const": "90d",
+          "description": "Last 90 days relative to today"
         },
         {
           "const": "month",
@@ -324,8 +332,16 @@
       "markdownDescription": "Goal dimension"
     },
     "time_dimensions": {
-      "type": "string",
-      "enum": ["time", "time:month", "time:week", "time:day", "time:hour"]
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": ["time", "time:month", "time:week", "time:day", "time:hour"]
+        },
+        {
+          "const": "time:minute",
+          "$comment": "only :internal"
+        }
+      ]
     },
     "dimensions": {
       "oneOf": [

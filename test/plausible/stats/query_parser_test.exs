@@ -24,12 +24,12 @@ defmodule Plausible.Stats.Filters.QueryParserTest do
     last: DateTime.new!(~D[2021-05-05], ~T[23:59:59], "Etc/UTC")
   }
   @date_range_7d %DateTimeRange{
-    first: DateTime.new!(~D[2021-04-29], ~T[00:00:00], "Etc/UTC"),
-    last: DateTime.new!(~D[2021-05-05], ~T[23:59:59], "Etc/UTC")
+    first: DateTime.new!(~D[2021-04-28], ~T[00:00:00], "Etc/UTC"),
+    last: DateTime.new!(~D[2021-05-04], ~T[23:59:59], "Etc/UTC")
   }
   @date_range_30d %DateTimeRange{
     first: DateTime.new!(~D[2021-04-05], ~T[00:00:00], "Etc/UTC"),
-    last: DateTime.new!(~D[2021-05-05], ~T[23:59:59], "Etc/UTC")
+    last: DateTime.new!(~D[2021-05-04], ~T[23:59:59], "Etc/UTC")
   }
   @date_range_month %DateTimeRange{
     first: DateTime.new!(~D[2021-05-01], ~T[00:00:00], "Etc/UTC"),
@@ -988,7 +988,7 @@ defmodule Plausible.Stats.Filters.QueryParserTest do
         "metrics" => ["visitors"],
         "date_range" => "all",
         "include" => %{
-          "comparisons" => %{"mode" => "custom", "date_range" => ["2021-04-05", "2021-05-05"]}
+          "comparisons" => %{"mode" => "custom", "date_range" => ["2021-04-05", "2021-05-04"]}
         }
       }
       |> check_success(
@@ -1488,6 +1488,39 @@ defmodule Plausible.Stats.Filters.QueryParserTest do
           pagination: %{limit: 10_000, offset: 0}
         })
       end
+    end
+
+    test "time:minute dimension fails public schema validation", %{site: site} do
+      %{
+        "site_id" => site.domain,
+        "metrics" => ["visitors"],
+        "date_range" => "all",
+        "dimensions" => ["time:minute"]
+      }
+      |> check_error(site, "#/dimensions/0: Invalid dimension \"time:minute\"")
+    end
+
+    test "time:minute dimension passes internal schema validation", %{site: site} do
+      %{
+        "site_id" => site.domain,
+        "metrics" => ["visitors"],
+        "date_range" => "all",
+        "dimensions" => ["time:minute"]
+      }
+      |> check_success(
+        site,
+        %{
+          metrics: [:visitors],
+          utc_time_range: @date_range_day,
+          filters: [],
+          dimensions: ["time:minute"],
+          order_by: nil,
+          timezone: site.timezone,
+          include: @default_include,
+          pagination: %{limit: 10_000, offset: 0}
+        },
+        :internal
+      )
     end
 
     test "custom properties dimension", %{site: site} do

@@ -20,7 +20,19 @@ export type Metric =
   | "total_revenue"
   | "average_revenue"
   | "scroll_depth";
-export type DateRangeShorthand = "30m" | "realtime" | "all" | "day" | "7d" | "30d" | "month" | "6mo" | "12mo" | "year";
+export type DateRangeShorthand =
+  | "30m"
+  | "realtime"
+  | "all"
+  | "day"
+  | "7d"
+  | "28d"
+  | "30d"
+  | "90d"
+  | "month"
+  | "6mo"
+  | "12mo"
+  | "year";
 /**
  * @minItems 2
  * @maxItems 2
@@ -62,7 +74,7 @@ export type SimpleFilterDimensions =
   | "visit:exit_page_hostname";
 export type CustomPropertyFilterDimensions = string;
 export type GoalDimension = "event:goal";
-export type TimeDimensions = "time" | "time:month" | "time:week" | "time:day" | "time:hour";
+export type TimeDimensions = ("time" | "time:month" | "time:week" | "time:day" | "time:hour") | "time:minute";
 export type FilterTree = FilterEntry | FilterAndOr | FilterNot | FilterHasDone;
 export type FilterEntry = FilterWithoutGoals | FilterWithGoals | FilterWithPattern | FilterForSegment;
 /**

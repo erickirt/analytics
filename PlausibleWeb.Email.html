@@ -14,7 +14,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-K7URE6B4.js"></script>
-    <script src="dist/sidebar_items-648A9919.js"></script>
+    <script src="dist/sidebar_items-FBB63DEB.js"></script>
     <script src="docs_config.js"></script>
     <script async src="dist/html-PVRIOB7F.js"></script>
 
@@ -217,7 +217,7 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#dashboard_locked/3" data-no-tooltip translate="no">dashboard_locked(user, usage, suggested_plan)</a>
+        <a href="#dashboard_locked/4" data-no-tooltip translate="no">dashboard_locked(user, team, usage, suggested_plan)</a>
 
       </div>
 
@@ -281,7 +281,7 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#guest_invitation_accepted/3" data-no-tooltip translate="no">guest_invitation_accepted(inviter_email, invitee_email, site)</a>
+        <a href="#guest_invitation_accepted/4" data-no-tooltip translate="no">guest_invitation_accepted(inviter_email, invitee_email, team, site)</a>
 
       </div>
 
@@ -345,7 +345,7 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#over_limit_email/3" data-no-tooltip translate="no">over_limit_email(user, usage, suggested_plan)</a>
+        <a href="#over_limit_email/4" data-no-tooltip translate="no">over_limit_email(user, team, usage, suggested_plan)</a>
 
       </div>
 
@@ -353,7 +353,7 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#ownership_transfer_accepted/3" data-no-tooltip translate="no">ownership_transfer_accepted(new_owner_email, inviter_email, site)</a>
+        <a href="#ownership_transfer_accepted/5" data-no-tooltip translate="no">ownership_transfer_accepted(new_owner_email, inviter_email, team, site, initiator_as_guest_editor?)</a>
 
       </div>
 
@@ -412,7 +412,7 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#site_setup_help/2" data-no-tooltip translate="no">site_setup_help(user, site)</a>
+        <a href="#site_setup_help/3" data-no-tooltip translate="no">site_setup_help(user, team, site)</a>
 
       </div>
 
@@ -428,7 +428,7 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#spike_notification/5" data-no-tooltip translate="no">spike_notification(email, site, current_visitors, sources, dashboard_link)</a>
+        <a href="#spike_notification/4" data-no-tooltip translate="no">spike_notification(email, site, stats, dashboard_link)</a>
 
       </div>
 
@@ -437,6 +437,14 @@ Pages
     <div class="summary-row">
       <div class="summary-signature">
         <a href="#stats_report/2" data-no-tooltip translate="no">stats_report(email, assigns)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#team_changed/4" data-no-tooltip translate="no">team_changed(owner_email, user, team, site)</a>
 
       </div>
 
@@ -468,7 +476,7 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#trial_one_week_reminder/1" data-no-tooltip translate="no">trial_one_week_reminder(user)</a>
+        <a href="#trial_one_week_reminder/2" data-no-tooltip translate="no">trial_one_week_reminder(user, team)</a>
 
       </div>
 
@@ -476,7 +484,7 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#trial_over_email/1" data-no-tooltip translate="no">trial_over_email(user)</a>
+        <a href="#trial_over_email/2" data-no-tooltip translate="no">trial_over_email(user, team)</a>
 
       </div>
 
@@ -484,7 +492,7 @@ Pages
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#trial_upgrade_email/4" data-no-tooltip translate="no">trial_upgrade_email(user, day, usage, suggested_plan)</a>
+        <a href="#trial_upgrade_email/5" data-no-tooltip translate="no">trial_upgrade_email(user, team, day, usage, suggested_plan)</a>
 
       </div>
 
@@ -571,7 +579,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">approaching_accept_traffic_until(notification)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L487" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L524" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -591,7 +599,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">approaching_accept_traffic_until_tomorrow(notification)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L498" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L536" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -611,7 +619,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">base_email()</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L525" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L564" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -631,7 +639,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">base_email(map)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L527" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L566" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -651,7 +659,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">cancellation_email(user)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L227" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L235" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -671,7 +679,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">check_stats_email(user)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L57" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L58" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -703,15 +711,15 @@ Pages
 
   </section>
 </section>
-<section class="detail" id="dashboard_locked/3">
+<section class="detail" id="dashboard_locked/4">
 
   <div class="detail-header">
-    <a href="#dashboard_locked/3" class="detail-link" data-no-tooltip aria-label="Link to this function">
+    <a href="#dashboard_locked/4" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
-    <h1 class="signature" translate="no">dashboard_locked(user, usage, suggested_plan)</h1>
+    <h1 class="signature" translate="no">dashboard_locked(user, team, usage, suggested_plan)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L181" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L186" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -731,7 +739,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">drop_notification(email, site, current_visitors, dashboard_link, installation_link)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L143" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L147" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -751,7 +759,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">enterprise_over_limit_internal_email(user, pageview_usage, site_usage, site_allowance)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L168" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L173" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -771,7 +779,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">error_report(reported_by, trace_id, feedback)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L472" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L509" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -791,7 +799,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">existing_user_invitation(email, site, inviter)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L247" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L255" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -811,7 +819,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">existing_user_team_invitation(email, team, inviter)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L270" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L278" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -831,7 +839,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">export_failure(user, site)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L465" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L502" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -851,7 +859,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">export_success(user, site, expires_at)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L437" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L474" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -863,15 +871,15 @@ Pages
 
   </section>
 </section>
-<section class="detail" id="guest_invitation_accepted/3">
+<section class="detail" id="guest_invitation_accepted/4">
 
   <div class="detail-header">
-    <a href="#guest_invitation_accepted/3" class="detail-link" data-no-tooltip aria-label="Link to this function">
+    <a href="#guest_invitation_accepted/4" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
-    <h1 class="signature" translate="no">guest_invitation_accepted(inviter_email, invitee_email, site)</h1>
+    <h1 class="signature" translate="no">guest_invitation_accepted(inviter_email, invitee_email, team, site)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L302" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L310" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -891,7 +899,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">guest_invitation_rejected(guest_invitation)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L328" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L337" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -911,7 +919,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">guest_to_team_member_promotion(email, team, inviter)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L281" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L289" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -931,7 +939,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">import_failure(site_import, user)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L421" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L458" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -951,7 +959,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">import_success(site_import, user)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L404" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L438" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -991,7 +999,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">new_user_invitation(email, invitation_id, site, inviter)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L235" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L243" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1011,7 +1019,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">new_user_team_invitation(email, invitation_id, team, inviter)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L258" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L266" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1023,15 +1031,15 @@ Pages
 
   </section>
 </section>
-<section class="detail" id="over_limit_email/3">
+<section class="detail" id="over_limit_email/4">
 
   <div class="detail-header">
-    <a href="#over_limit_email/3" class="detail-link" data-no-tooltip aria-label="Link to this function">
+    <a href="#over_limit_email/4" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
-    <h1 class="signature" translate="no">over_limit_email(user, usage, suggested_plan)</h1>
+    <h1 class="signature" translate="no">over_limit_email(user, team, usage, suggested_plan)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L156" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L160" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1043,15 +1051,15 @@ Pages
 
   </section>
 </section>
-<section class="detail" id="ownership_transfer_accepted/3">
+<section class="detail" id="ownership_transfer_accepted/5">
 
   <div class="detail-header">
-    <a href="#ownership_transfer_accepted/3" class="detail-link" data-no-tooltip aria-label="Link to this function">
+    <a href="#ownership_transfer_accepted/5" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
-    <h1 class="signature" translate="no">ownership_transfer_accepted(new_owner_email, inviter_email, site)</h1>
+    <h1 class="signature" translate="no">ownership_transfer_accepted(new_owner_email, inviter_email, team, site, initiator_as_guest_editor?)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L352" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L363" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1071,7 +1079,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">ownership_transfer_rejected(site_transfer)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L365" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L398" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1091,7 +1099,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">ownership_transfer_request(email, invitation_id, site, inviter, new_owner_account)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L289" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L297" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1111,7 +1119,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">password_reset_email(email, reset_link)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L65" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L66" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1131,7 +1139,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">priority_email()</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L513" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L552" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1152,7 +1160,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">priority_email(map)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L515" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L554" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1172,7 +1180,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">site_member_removed(guest_membership)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L378" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L412" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1184,13 +1192,13 @@ Pages
 
   </section>
 </section>
-<section class="detail" id="site_setup_help/2">
+<section class="detail" id="site_setup_help/3">
 
   <div class="detail-header">
-    <a href="#site_setup_help/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
+    <a href="#site_setup_help/3" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
-    <h1 class="signature" translate="no">site_setup_help(user, site)</h1>
+    <h1 class="signature" translate="no">site_setup_help(user, team, site)</h1>
 
       <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L34" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
@@ -1212,7 +1220,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">site_setup_success(user, team, site)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L45" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L46" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1224,15 +1232,15 @@ Pages
 
   </section>
 </section>
-<section class="detail" id="spike_notification/5">
+<section class="detail" id="spike_notification/4">
 
   <div class="detail-header">
-    <a href="#spike_notification/5" class="detail-link" data-no-tooltip aria-label="Link to this function">
+    <a href="#spike_notification/4" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
-    <h1 class="signature" translate="no">spike_notification(email, site, current_visitors, sources, dashboard_link)</h1>
+    <h1 class="signature" translate="no">spike_notification(email, site, stats, dashboard_link)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L130" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L133" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1252,7 +1260,27 @@ Pages
     </a>
     <h1 class="signature" translate="no">stats_report(email, assigns)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L122" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L125" class="icon-action" rel="help" aria-label="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="team_changed/4">
+
+  <div class="detail-header">
+    <a href="#team_changed/4" class="detail-link" data-no-tooltip aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <h1 class="signature" translate="no">team_changed(owner_email, user, team, site)</h1>
+
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L384" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1272,7 +1300,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">team_invitation_accepted(inviter_email, invitee_email, team)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L315" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L324" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1292,7 +1320,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">team_invitation_rejected(team_invitation)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L340" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L350" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1312,7 +1340,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">team_member_removed(team_membership)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L391" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L425" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1324,15 +1352,15 @@ Pages
 
   </section>
 </section>
-<section class="detail" id="trial_one_week_reminder/1">
+<section class="detail" id="trial_one_week_reminder/2">
 
   <div class="detail-header">
-    <a href="#trial_one_week_reminder/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+    <a href="#trial_one_week_reminder/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
-    <h1 class="signature" translate="no">trial_one_week_reminder(user)</h1>
+    <h1 class="signature" translate="no">trial_one_week_reminder(user, team)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L89" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L90" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1344,15 +1372,15 @@ Pages
 
   </section>
 </section>
-<section class="detail" id="trial_over_email/1">
+<section class="detail" id="trial_over_email/2">
 
   <div class="detail-header">
-    <a href="#trial_over_email/1" class="detail-link" data-no-tooltip aria-label="Link to this function">
+    <a href="#trial_over_email/2" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
-    <h1 class="signature" translate="no">trial_over_email(user)</h1>
+    <h1 class="signature" translate="no">trial_over_email(user, team)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L111" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L113" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1364,15 +1392,15 @@ Pages
 
   </section>
 </section>
-<section class="detail" id="trial_upgrade_email/4">
+<section class="detail" id="trial_upgrade_email/5">
 
   <div class="detail-header">
-    <a href="#trial_upgrade_email/4" class="detail-link" data-no-tooltip aria-label="Link to this function">
+    <a href="#trial_upgrade_email/5" class="detail-link" data-no-tooltip aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
-    <h1 class="signature" translate="no">trial_upgrade_email(user, day, usage, suggested_plan)</h1>
+    <h1 class="signature" translate="no">trial_upgrade_email(user, team, day, usage, suggested_plan)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L97" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L98" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1392,7 +1420,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">two_factor_disabled_email(user)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L81" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L82" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1412,7 +1440,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">two_factor_enabled_email(user)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L73" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L74" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1452,7 +1480,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">yearly_expiration_notification(team, owner)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L208" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L215" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 
@@ -1472,7 +1500,7 @@ Pages
     </a>
     <h1 class="signature" translate="no">yearly_renewal_notification(team, owner)</h1>
 
-      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L193" class="icon-action" rel="help" aria-label="View Source">
+      <a href="https://github.com/plausible/analytics/blob/main/lib/plausible_web/email.ex#L199" class="icon-action" rel="help" aria-label="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
      </a>
 

@@ -5,6 +5,7 @@ import React, {
   useRef,
   useCallback
 } from 'react'
+import LazyLoader from '../components/lazy-loader'
 import * as api from '../api'
 import * as url from '../util/url'
 import { Tooltip } from '../util/tooltip'
@@ -544,6 +545,8 @@ function columnHeader(index, direction) {
 export function FunnelExploration() {
   const site = useSiteContext()
   const { dashboardState } = useDashboardStateContext()
+  const [inViewport, setInViewport] = useState(false)
+
   const [steps, setSteps] = useState([])
   const [direction, setDirection] = useState(EXPLORATION_DIRECTIONS.FORWARD)
   const [funnel, setFunnel] = useState([])
@@ -681,6 +684,8 @@ export function FunnelExploration() {
   // On subsequent renders (via user interaction) fetch next steps and,
   // if the journey changed, also refetch the funnel.
   useEffect(() => {
+    if (!inViewport) return
+
     const journeyChanged =
       prevStepsRef.current !== steps ||
       prevDirectionRef.current !== direction ||
@@ -781,9 +786,12 @@ export function FunnelExploration() {
     return () => {
       cancelled = true
     }
-  }, [site, dashboardState, steps, direction, activeColumnFilter])
+  }, [site, dashboardState, steps, direction, activeColumnFilter, inViewport])
 
-  const numColumns = Math.max(steps.length + 1, 3)
+  const initialLoading =
+    !inViewport || (steps.length === 0 && activeColumnLoading)
+  const numColumns = Math.max(steps.length + 1, initialLoading ? 1 : 3)
+  const gridColumns = Math.max(numColumns, 3)
   const activeColumnIndex = steps.length
   const containerRef = useRef(null)
 
@@ -818,109 +826,115 @@ export function FunnelExploration() {
   }, [steps.length])
 
   return (
-    <div className="flex flex-col gap-4 pt-4">
-      <div className="flex flex-wrap items-center gap-x-3">
-        <h4 className="flex-1 text-base font-semibold dark:text-gray-100">
-          {funnel.length >= 2
-            ? `${funnel.length}-step user journey`
-            : 'Explore user journeys'}
-        </h4>
-        {overallConversionRate != null && (
-          <div className="order-last sm:order-none w-full sm:w-auto flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-            <span>
-              <span className="font-medium sm:font-semibold text-gray-700 dark:text-gray-200">
-                Conversion: {parseFloat(overallConversionRate).toFixed(1)}%{' '}
+    <LazyLoader onVisible={() => setInViewport(true)}>
+      <div className="flex flex-col gap-4 pt-4">
+        <div className="flex flex-wrap items-center gap-x-3">
+          <h4 className="flex-1 text-base font-semibold dark:text-gray-100">
+            {funnel.length >= 2
+              ? `${funnel.length}-step user journey`
+              : 'Explore user journeys'}
+          </h4>
+          {overallConversionRate != null && (
+            <div className="order-last sm:order-none w-full sm:w-auto flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+              <span>
+                <span className="font-medium sm:font-semibold text-gray-700 dark:text-gray-200">
+                  Conversion: {parseFloat(overallConversionRate).toFixed(1)}%{' '}
+                </span>
+                <span className="text-gray-500 dark:text-gray-400">
+                  ({numberShortFormatter(overallConversionVisitors)})
+                </span>
               </span>
-              <span className="text-gray-500 dark:text-gray-400">
-                ({numberShortFormatter(overallConversionVisitors)})
+              <span className="hidden sm:inline text-gray-300 dark:text-gray-600 select-none">
+                |
               </span>
-            </span>
-            <span className="hidden sm:inline text-gray-300 dark:text-gray-600 select-none">
-              |
-            </span>
-          </div>
-        )}
-        <Tooltip
-          info={<span className="whitespace-nowrap">Deselect all</span>}
-          className={steps.length === 0 ? 'invisible pointer-events-none' : ''}
-        >
-          <button
-            onClick={handleReset}
-            className={`${popover.toggleButton.classNames.rounded} ${popover.toggleButton.classNames.outline} justify-center !h-7 px-1.5`}
+            </div>
+          )}
+          <Tooltip
+            info={<span className="whitespace-nowrap">Deselect all</span>}
+            className={
+              steps.length === 0 ? 'invisible pointer-events-none' : ''
+            }
           >
-            <RefreshIcon className="size-3.5" />
-          </button>
-        </Tooltip>
-      </div>
+            <button
+              onClick={handleReset}
+              className={`${popover.toggleButton.classNames.rounded} ${popover.toggleButton.classNames.outline} justify-center !h-7 px-1.5`}
+            >
+              <RefreshIcon className="size-3.5" />
+            </button>
+          </Tooltip>
+        </div>
 
-      <div
-        ref={containerRef}
-        className="relative grid gap-6 overflow-x-auto -mx-5 px-5 -mb-3 pb-3 [scrollbar-width:thin] [scrollbar-color:theme(colors.gray.300)_transparent] dark:[scrollbar-color:theme(colors.gray.600)_transparent]"
-        style={{
-          gridTemplateColumns: `repeat(${numColumns}, minmax(20rem, 1fr))`
-        }}
-      >
-        {Array.from({ length: numColumns }, (_, i) => {
-          const isActive = i === activeColumnIndex
-          const isReachable = steps.length >= i
+        <div
+          ref={containerRef}
+          className="relative grid gap-6 overflow-x-auto -mx-5 px-5 -mb-3 pb-3 [scrollbar-width:thin] [scrollbar-color:theme(colors.gray.300)_transparent] dark:[scrollbar-color:theme(colors.gray.600)_transparent]"
+          style={{
+            gridTemplateColumns: `repeat(${gridColumns}, minmax(20rem, 1fr))`
+          }}
+        >
+          {Array.from({ length: numColumns }, (_, i) => {
+            const isActive = i === activeColumnIndex
+            const isReachable = steps.length >= i
 
-          return (
-            <ExplorationColumn
-              key={i}
-              colIndex={i}
-              header={columnHeader(i, direction)}
-              className={
-                steps.length === 0 && i === 2
-                  ? 'sm:hidden'
-                  : steps.length === 0 && i === 1
-                    ? 'sm:[grid-column:span_2]'
-                    : undefined
-              }
-              active={isReachable}
-              // Active column gets live results; previously-active (now
-              // selected) columns get the candidate list that was visible at
-              // the moment of selection so the user can switch options
-              // without losing context. Pre-selected columns (e.g. populated
-              // by interesting-funnel preload) have no frozen results and
-              // fall back to a single-item display sourced from funnel data.
-              results={
-                isActive ? activeColumnResults : frozenColumnResults[i] || []
-              }
-              loading={isActive ? activeColumnLoading : false}
-              selected={steps[i] || null}
-              selectedVisitors={
-                provisionalFunnelEntries[i]?.visitors ??
-                funnel[i]?.visitors ??
-                null
-              }
-              selectedConversionRate={
-                provisionalFunnelEntries[i]?.conversion_rate ??
-                funnel[i]?.conversion_rate ??
-                null
-              }
-              maxVisitors={funnel[0]?.visitors ?? null}
-              onSelect={(selected) => handleSelect(i, selected)}
-              onFilterChange={isActive ? setActiveColumnFilter : () => {}}
-              filter={isActive ? activeColumnFilter : ''}
-              direction={direction}
-              onDirectionChange={i === 0 ? handleDirectionSelect : undefined}
-              headerConversionRate={
-                funnel[i]?.conversion_rate != null
-                  ? i === 0
-                    ? '100%'
-                    : `${parseFloat(funnel[i].conversion_rate).toFixed(1)}%`
-                  : null
-              }
-            />
-          )
-        })}
-        <PathConnectors
-          key={connectorsKey}
-          containerRef={containerRef}
-          steps={steps}
-        />
+            return (
+              <ExplorationColumn
+                key={i}
+                colIndex={i}
+                header={columnHeader(i, direction)}
+                className={
+                  steps.length === 0 && i === 2
+                    ? 'sm:hidden'
+                    : steps.length === 0 && i === 1
+                      ? 'sm:[grid-column:span_2]'
+                      : undefined
+                }
+                active={isReachable}
+                // Active column gets live results; previously-active (now
+                // selected) columns get the candidate list that was visible at
+                // the moment of selection so the user can switch options
+                // without losing context. Pre-selected columns (e.g. populated
+                // by interesting-funnel preload) have no frozen results and
+                // fall back to a single-item display sourced from funnel data.
+                results={
+                  isActive ? activeColumnResults : frozenColumnResults[i] || []
+                }
+                loading={
+                  isActive ? initialLoading || activeColumnLoading : false
+                }
+                selected={steps[i] || null}
+                selectedVisitors={
+                  provisionalFunnelEntries[i]?.visitors ??
+                  funnel[i]?.visitors ??
+                  null
+                }
+                selectedConversionRate={
+                  provisionalFunnelEntries[i]?.conversion_rate ??
+                  funnel[i]?.conversion_rate ??
+                  null
+                }
+                maxVisitors={funnel[0]?.visitors ?? null}
+                onSelect={(selected) => handleSelect(i, selected)}
+                onFilterChange={isActive ? setActiveColumnFilter : () => {}}
+                filter={isActive ? activeColumnFilter : ''}
+                direction={direction}
+                onDirectionChange={i === 0 ? handleDirectionSelect : undefined}
+                headerConversionRate={
+                  funnel[i]?.conversion_rate != null
+                    ? i === 0
+                      ? '100%'
+                      : `${parseFloat(funnel[i].conversion_rate).toFixed(1)}%`
+                    : null
+                }
+              />
+            )
+          })}
+          <PathConnectors
+            key={connectorsKey}
+            containerRef={containerRef}
+            steps={steps}
+          />
+        </div>
       </div>
-    </div>
+    </LazyLoader>
   )
 }
 
